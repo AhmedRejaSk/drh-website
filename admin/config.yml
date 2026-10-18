@@ -1,0 +1,99 @@
+# Sveltia CMS configuration for DRH Homoeopathy Health Centre
+# Docs: https://github.com/sveltia/sveltia-cms
+
+backend:
+  # GitHub backend: login with a GitHub personal access token
+  # Replace YOUR-GITHUB-USERNAME/drh-website with the real repo path
+  name: github
+  repo: YOUR-GITHUB-USERNAME/drh-website
+  branch: main
+
+# Blog photos uploaded by the doctor will go here
+media_folder: photos/blog
+public_folder: photos/blog
+
+# Site URL shown in the CMS preview
+site_url: https://YOUR-GITHUB-USERNAME.github.io/drh-website
+
+collections:
+  - name: blog
+    label: Blog
+    label_singular: Post
+    folder: content
+    # All posts live in a single JSON file
+    extension: json
+    format: json
+    # Use nested structure so all posts stay in content/posts.json
+    # via the "posts" array key
+    identifier_field: slug
+    # This tells Sveltia to look at the "posts" array inside content/posts.json
+    # NOTE: If Sveltia CMS does not support single-file JSON collections in your
+    # version, use one-post-per-file with extension: json instead.
+    files:
+      - name: posts
+        label: All Posts
+        file: content/posts.json
+        fields:
+          - name: posts
+            label: Posts
+            label_singular: Post
+            widget: list
+            summary: "{{fields.title_en}} ({{fields.date}})"
+            fields:
+              - label: "Published?"
+                name: published
+                widget: boolean
+                default: false
+                hint: "Turn ON to make the post visible to everyone."
+
+              - label: "Web address word (slug)"
+                name: slug
+                widget: string
+                hint: "Lowercase letters and hyphens only. Example: kidney-stone-tips"
+                pattern: ['^[a-z0-9-]+$', "Use lowercase letters, numbers and hyphens only"]
+
+              - label: "Date"
+                name: date
+                widget: datetime
+                format: YYYY-MM-DD
+                date_format: DD/MM/YYYY
+                time_format: false
+                default: ""
+
+              - label: "Cover photo"
+                name: cover
+                widget: image
+                required: false
+                hint: "Compress to ~300 KB before uploading."
+
+              - label: "Title (English)"
+                name: title_en
+                widget: string
+                required: false
+
+              - label: "Title (Bengali / বাংলা)"
+                name: title_bn
+                widget: string
+                required: false
+
+              - label: "Short summary (English)"
+                name: excerpt_en
+                widget: text
+                required: false
+
+              - label: "Short summary (Bengali / বাংলা)"
+                name: excerpt_bn
+                widget: text
+                required: false
+
+              - label: "Article (English)"
+                name: body_en
+                widget: markdown
+                required: false
+                hint: "Use ## for headings, **bold**, *italic*. Add photos with the image button."
+
+              - label: "Article (Bengali / বাংলা)"
+                name: body_bn
+                widget: markdown
+                required: false
+                hint: "বাংলায় লেখা না থাকলে ইংরেজিটি দেখানো হবে।"
