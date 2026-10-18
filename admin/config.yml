@@ -4,7 +4,7 @@
 backend:
   # GitHub backend: login with a GitHub personal access token
   name: github
-  repo: ahmedreja078/drh-website
+  repo: AhmedRejaSk/drh-website
   branch: main
 
 # Blog photos uploaded by the doctor will go here
@@ -12,7 +12,7 @@ media_folder: photos/blog
 public_folder: photos/blog
 
 # Site URL shown in the CMS preview
-site_url: https://ahmedreja078.github.io/drh-website
+site_url: https://ahmedrejask.github.io/drh-website
 
 collections:
   - name: blog
