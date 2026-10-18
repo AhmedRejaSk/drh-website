@@ -2244,3 +2244,47 @@ body {
   border-color: var(--primary);
   transform: scale(1.05);
 }
+
+/* Developer attribution link in footer */
+.footer-developer {
+  font-size: var(--text-sm);
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+.dev-link {
+  color: var(--mint);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.dev-link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.dev-role {
+  color: #7a9da0;
+  font-size: 0.825rem;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .footer-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-developer {
+    margin-top: 0;
+  }
+}
